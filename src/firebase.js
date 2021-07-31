@@ -1,5 +1,6 @@
+const akey = config.api_token;
 const firebaseConfig = {
-  apiKey: 'AIzaSyCm61E2xdQgQJGaOupsnEiARFhk2FNmub4',
+  apiKey: akey,
   authDomain: 'vitty-dscvit.firebaseapp.com',
   projectId: 'vitty-dscvit',
   databaseURL: 'https://vitty-dscvit.firebaseio.com',
@@ -364,9 +365,9 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       //   when: time2.getTime(),
       //   periodInMinutes: 10080
       // })
-      function nullcheck (a) {
+      function nullcheck(a) {
         if (a == null) {
-          return ''
+          return 'null'
         } else {
           return a
         }
@@ -376,7 +377,8 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         .collection('timetable')
         .doc('monday')
         .collection('periods')
-        .doc('P' + i).set({
+        .doc('P' + i)
+        .set({
           slot: nullcheck(monday[i].Slot),
           courseCode: nullcheck(monday[i].Course_Name),
           courseName: nullcheck(course),
@@ -409,9 +411,9 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       //   when: time2.getTime(),
       //   periodInMinutes: 10080
       // })
-      function nullcheck (a) {
+      function nullcheck(a) {
         if (a == null) {
-          return ''
+          return 'null'
         } else {
           return a
         }
@@ -421,7 +423,8 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         .collection('timetable')
         .doc('tuesday')
         .collection('periods')
-        .doc('P' + i).set({
+        .doc('P' + i)
+        .set({
           slot: nullcheck(tuesday[i].Slot),
           courseCode: nullcheck(tuesday[i].Course_Name),
           courseName: nullcheck(course),
@@ -454,9 +457,9 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       //   when: time2.getTime(),
       //   periodInMinutes: 10080
       // })
-      function nullcheck (a) {
+      function nullcheck(a) {
         if (a == null) {
-          return ''
+          return 'null'
         } else {
           return a
         }
@@ -466,7 +469,8 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         .collection('timetable')
         .doc('wednesday')
         .collection('periods')
-        .doc('P' + i).set({
+        .doc('P' + i)
+        .set({
           slot: nullcheck(wednesday[i].Slot),
           courseCode: nullcheck(wednesday[i].Course_Name),
           courseName: nullcheck(course),
@@ -499,9 +503,9 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       //   when: time2.getTime(),
       //   periodInMinutes: 10080
       // })
-      function nullcheck (a) {
+      function nullcheck(a) {
         if (a == null) {
-          return ''
+          return 'null'
         } else {
           return a
         }
@@ -511,7 +515,8 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         .collection('timetable')
         .doc('thursday')
         .collection('periods')
-        .doc('P' + i).set({
+        .doc('P' + i)
+        .set({
           slot: nullcheck(thursday[i].Slot),
           courseCode: nullcheck(thursday[i].Course_Name),
           courseName: nullcheck(course),
@@ -544,9 +549,9 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       //   when: time2.getTime(),
       //   periodInMinutes: 10080
       // })
-      function nullcheck (a) {
+      function nullcheck(a) {
         if (a == null) {
-          return ''
+          return 'null'
         } else {
           return a
         }
@@ -556,7 +561,8 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         .collection('timetable')
         .doc('friday')
         .collection('periods')
-        .doc('P' + i).set({
+        .doc('P' + i)
+        .set({
           slot: nullcheck(friday[i].Slot),
           courseCode: nullcheck(friday[i].Course_Name),
           courseName: nullcheck(course),
@@ -575,176 +581,236 @@ window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     sendResponse('successfully')
   }
   if (message === 'login') {
-    window.firebase.auth().signInWithPopup(provider).then(res => {
-      console.log(res.user.uid.toString())
-      const user = db.collection('users').doc(res.user.uid.toString())
-      user.get().then((snapshot) => {
-        if (snapshot.exists) {
-          const mon111 = []
-          const tue111 = []
-          const wed111 = []
-          const thu111 = []
-          const fri111 = []
-          db.collection('users')
-            .doc(res.user.uid.toString())
-            .collection('timetable')
-            .doc('monday')
-            .collection('periods').get().then((snap) => {
-              for (const doc of snap.docs) {
-                console.log(doc)
-                const a = {}
-                a.Slot = doc.data().slot
-                a.Course_Name = doc.data().courseCode
-                a.Course_type = doc.data().Course_type
-                a.Venue = doc.data().location
-                mon111.push(a)
-              }
-              console.log(mon111)
-              window.localStorage.setItem('monday', JSON.stringify(mon111))
-            }).catch((error) => {
-              console.error(error)
-            })
-          db.collection('users')
-            .doc(res.user.uid.toString())
-            .collection('timetable')
-            .doc('tuesday')
-            .collection('periods').get().then((snap) => {
-              for (const doc of snap.docs) {
-                console.log(doc)
-                const a = {}
-                a.Slot = doc.data().slot
-                a.Course_Name = doc.data().courseCode
-                a.Course_type = doc.data().Course_type
-                a.Venue = doc.data().location
-                tue111.push(a)
-              }
-              console.log(tue111)
-              window.localStorage.setItem('tuesday', JSON.stringify(tue111))
-            }).catch((error) => {
-              console.error(error)
-            })
-          db.collection('users')
-            .doc(res.user.uid.toString())
-            .collection('timetable')
-            .doc('wednesday')
-            .collection('periods').get().then((snap) => {
-              for (const doc of snap.docs) {
-                console.log(doc)
-                const a = {}
-                a.Slot = doc.data().slot
-                a.Course_Name = doc.data().courseCode
-                a.Course_type = doc.data().Course_type
-                a.Venue = doc.data().location
-                wed111.push(a)
-              }
-              console.log(wed111)
-              window.localStorage.setItem('wednesday', JSON.stringify(wed111))
-            }).catch((error) => {
-              console.error(error)
-            })
-          db.collection('users')
-            .doc(res.user.uid.toString())
-            .collection('timetable')
-            .doc('thursday')
-            .collection('periods').get().then((snap) => {
-              for (const doc of snap.docs) {
-                console.log(doc)
-                const a = {}
-                a.Slot = doc.data().slot
-                a.Course_Name = doc.data().courseCode
-                a.Course_type = doc.data().Course_type
-                a.Venue = doc.data().location
-                thu111.push(a)
-              }
-              console.log(thu111)
-              window.localStorage.setItem('thursday', JSON.stringify(thu111))
-            }).catch((error) => {
-              console.error(error)
-            })
-          db.collection('users')
-            .doc(res.user.uid.toString())
-            .collection('timetable')
-            .doc('friday')
-            .collection('periods').get().then((snap) => {
-              for (const doc of snap.docs) {
-                console.log(doc)
-                const a = {}
-                a.Slot = doc.data().slot
-                a.Course_Name = doc.data().courseCode
-                a.Course_type = doc.data().Course_type
-                a.Venue = doc.data().location
-                fri111.push(a)
-              }
-              console.log(fri111)
-              window.localStorage.setItem('friday', JSON.stringify(fri111))
-              window.localStorage.setItem('uid', res.user.uid.toString())
-            }).catch((error) => {
-              console.error(error)
-            })
-          window.localStorage.setItem('found', 'true')
-        } else {
-          window.localStorage.setItem('found', 'false')
-          window.localStorage.setItem('uid', res.user.uid.toString())
-        }
+    window.firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((res) => {
+        console.log(res.user.uid.toString())
+        const user = db.collection('users').doc(res.user.uid.toString())
+        user.get().then((snapshot) => {
+          if (snapshot.exists) {
+            const mon111 = []
+            const tue111 = []
+            const wed111 = []
+            const thu111 = []
+            const fri111 = []
+            db.collection('users')
+              .doc(res.user.uid.toString())
+              .collection('timetable')
+              .doc('monday')
+              .collection('periods')
+              .get()
+              .then((snap) => {
+                for (const doc of snap.docs) {
+                  console.log(doc)
+                  const a = {}
+                  a.Slot = doc.data().slot
+                  a.Course_Name = doc.data().courseCode
+                  a.Course_type = doc.data().Course_type
+                  a.Venue = doc.data().location
+                  mon111.push(a)
+                }
+                console.log(mon111)
+                window.localStorage.setItem('monday', JSON.stringify(mon111))
+              })
+              .catch((error) => {
+                console.error(error)
+              })
+            db.collection('users')
+              .doc(res.user.uid.toString())
+              .collection('timetable')
+              .doc('tuesday')
+              .collection('periods')
+              .get()
+              .then((snap) => {
+                for (const doc of snap.docs) {
+                  console.log(doc)
+                  const a = {}
+                  a.Slot = doc.data().slot
+                  a.Course_Name = doc.data().courseCode
+                  a.Course_type = doc.data().Course_type
+                  a.Venue = doc.data().location
+                  tue111.push(a)
+                }
+                console.log(tue111)
+                window.localStorage.setItem('tuesday', JSON.stringify(tue111))
+              })
+              .catch((error) => {
+                console.error(error)
+              })
+            db.collection('users')
+              .doc(res.user.uid.toString())
+              .collection('timetable')
+              .doc('wednesday')
+              .collection('periods')
+              .get()
+              .then((snap) => {
+                for (const doc of snap.docs) {
+                  console.log(doc)
+                  const a = {}
+                  a.Slot = doc.data().slot
+                  a.Course_Name = doc.data().courseCode
+                  a.Course_type = doc.data().Course_type
+                  a.Venue = doc.data().location
+                  wed111.push(a)
+                }
+                console.log(wed111)
+                window.localStorage.setItem('wednesday', JSON.stringify(wed111))
+              })
+              .catch((error) => {
+                console.error(error)
+              })
+            db.collection('users')
+              .doc(res.user.uid.toString())
+              .collection('timetable')
+              .doc('thursday')
+              .collection('periods')
+              .get()
+              .then((snap) => {
+                for (const doc of snap.docs) {
+                  console.log(doc)
+                  const a = {}
+                  a.Slot = doc.data().slot
+                  a.Course_Name = doc.data().courseCode
+                  a.Course_type = doc.data().Course_type
+                  a.Venue = doc.data().location
+                  thu111.push(a)
+                }
+                console.log(thu111)
+                window.localStorage.setItem('thursday', JSON.stringify(thu111))
+              })
+              .catch((error) => {
+                console.error(error)
+              })
+            db.collection('users')
+              .doc(res.user.uid.toString())
+              .collection('timetable')
+              .doc('friday')
+              .collection('periods')
+              .get()
+              .then((snap) => {
+                for (const doc of snap.docs) {
+                  console.log(doc)
+                  const a = {}
+                  a.Slot = doc.data().slot
+                  a.Course_Name = doc.data().courseCode
+                  a.Course_type = doc.data().Course_type
+                  a.Venue = doc.data().location
+                  fri111.push(a)
+                }
+                console.log(fri111)
+                window.localStorage.setItem('friday', JSON.stringify(fri111))
+                window.localStorage.setItem('uid', res.user.uid.toString())
+              })
+              .catch((error) => {
+                console.error(error)
+              })
+            window.localStorage.setItem('found', 'true')
+          } else {
+            window.localStorage.setItem('found', 'false')
+            window.localStorage.setItem('uid', res.user.uid.toString())
+          }
+        })
       })
-    }).catch(e => {
-      console.log(e)
-    })
+      .catch((e) => {
+        console.log(e)
+      })
     sendResponse('Success')
   }
   if (message === 'delete-data') {
     const userid = window.localStorage.getItem('uid')
-    db.collection('users').doc(userid).collection('timetable').doc('monday').collection('periods').get().then((val) => {
-      val.forEach((val) => {
-        val.ref.delete()
+    db.collection('users')
+      .doc(userid)
+      .collection('timetable')
+      .doc('monday')
+      .collection('periods')
+      .get()
+      .then((val) => {
+        val.forEach((val) => {
+          val.ref.delete()
+        })
+        console.log('deleted data successfully')
       })
-      console.log('deleted data successfully')
-    }).catch((error) => {
-      console.error('Error removing document: ', error)
-    })
-    db.collection('users').doc(userid).collection('timetable').doc('tuesday').collection('periods').get().then((val) => {
-      val.forEach((val) => {
-        val.ref.delete()
+      .catch((error) => {
+        console.error('Error removing document: ', error)
       })
-      console.log('deleted data successfully')
-    }).catch((error) => {
-      console.error('Error removing document: ', error)
-    })
-    db.collection('users').doc(userid).collection('timetable').doc('wednesday').collection('periods').get().then((val) => {
-      val.forEach((val) => {
-        val.ref.delete()
+    db.collection('users')
+      .doc(userid)
+      .collection('timetable')
+      .doc('tuesday')
+      .collection('periods')
+      .get()
+      .then((val) => {
+        val.forEach((val) => {
+          val.ref.delete()
+        })
+        console.log('deleted data successfully')
       })
-      console.log('deleted data successfully')
-    }).catch((error) => {
-      console.error('Error removing document: ', error)
-    })
-    db.collection('users').doc(userid).collection('timetable').doc('thursday').collection('periods').get().then((val) => {
-      val.forEach((val) => {
-        val.ref.delete()
+      .catch((error) => {
+        console.error('Error removing document: ', error)
       })
-      console.log('deleted data successfully')
-    }).catch((error) => {
-      console.error('Error removing document: ', error)
-    })
-    db.collection('users').doc(userid).collection('timetable').doc('friday').collection('periods').get().then((val) => {
-      val.forEach((val) => {
-        val.ref.delete()
+    db.collection('users')
+      .doc(userid)
+      .collection('timetable')
+      .doc('wednesday')
+      .collection('periods')
+      .get()
+      .then((val) => {
+        val.forEach((val) => {
+          val.ref.delete()
+        })
+        console.log('deleted data successfully')
       })
-      console.log('deleted data successfully')
-    }).catch((error) => {
-      console.error('Error removing document: ', error)
-    })
-    db.collection('users').doc(userid).delete().then(() => {
-      console.log('deleted data successfully')
-    }).catch((error) => {
-      console.error('Error removing document: ', error)
-    })
+      .catch((error) => {
+        console.error('Error removing document: ', error)
+      })
+    db.collection('users')
+      .doc(userid)
+      .collection('timetable')
+      .doc('thursday')
+      .collection('periods')
+      .get()
+      .then((val) => {
+        val.forEach((val) => {
+          val.ref.delete()
+        })
+        console.log('deleted data successfully')
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error)
+      })
+    db.collection('users')
+      .doc(userid)
+      .collection('timetable')
+      .doc('friday')
+      .collection('periods')
+      .get()
+      .then((val) => {
+        val.forEach((val) => {
+          val.ref.delete()
+        })
+        console.log('deleted data successfully')
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error)
+      })
+    db.collection('users')
+      .doc(userid)
+      .delete()
+      .then(() => {
+        console.log('deleted data successfully')
+      })
+      .catch((error) => {
+        console.error('Error removing document: ', error)
+      })
     sendResponse('successfully')
   }
   if (message === 'logout') {
-    window.firebase.auth().signOut().then(() => {
-    }).catch(() => {
-    })
+    window.firebase
+      .auth()
+      .signOut()
+      .then(() => {})
+      .catch(() => {})
     sendResponse('successfully')
   }
 })
@@ -771,7 +837,7 @@ window.chrome.alarms.onAlarm.addListener((alarm) => {
 //   periodInMinutes: 1
 // })
 
-function alarms1 () {
+function alarms1() {
   window.chrome.alarms.clearAll()
   let count = 10
   if (window.localStorage.getItem('found') !== null) {
@@ -794,8 +860,15 @@ function alarms1 () {
         const today = new Date()
         const timea = new Date('April 5 2021 ' + mon1[monday[i].Slot] + ':00')
         const time2 = addMinutes(timea, -5)
-        let d = new Date(today.getFullYear(), today.getMonth(), today.getDate(), time2.getHours(), time2.getMinutes(), time2.getSeconds())
-        d.setDate(d.getDate() + (1 + 7 - d.getDay()) % 7)
+        let d = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          time2.getHours(),
+          time2.getMinutes(),
+          time2.getSeconds()
+        )
+        d.setDate(d.getDate() + ((1 + 7 - d.getDay()) % 7))
         if (d < today) {
           d = addMinutes(d, 10080)
         }
@@ -819,8 +892,15 @@ function alarms1 () {
         const today = new Date()
         const timea = new Date('April 6 2021 ' + tue1[tuesday[i].Slot] + ':00')
         const time2 = addMinutes(timea, -5)
-        let d = new Date(today.getFullYear(), today.getMonth(), today.getDate(), time2.getHours(), time2.getMinutes(), time2.getSeconds())
-        d.setDate(d.getDate() + (2 + 7 - d.getDay()) % 7)
+        let d = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          time2.getHours(),
+          time2.getMinutes(),
+          time2.getSeconds()
+        )
+        d.setDate(d.getDate() + ((2 + 7 - d.getDay()) % 7))
         if (d < today) {
           d = addMinutes(d, 10080)
         }
@@ -842,10 +922,19 @@ function alarms1 () {
           course = courseName[wednesday[i].Course_Name]
         }
         const today = new Date()
-        const timea = new Date('April 7 2021 ' + wed1[wednesday[i].Slot] + ':00')
+        const timea = new Date(
+          'April 7 2021 ' + wed1[wednesday[i].Slot] + ':00'
+        )
         const time2 = addMinutes(timea, -5)
-        let d = new Date(today.getFullYear(), today.getMonth(), today.getDate(), time2.getHours(), time2.getMinutes(), time2.getSeconds())
-        d.setDate(d.getDate() + (3 + 7 - d.getDay()) % 7)
+        let d = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          time2.getHours(),
+          time2.getMinutes(),
+          time2.getSeconds()
+        )
+        d.setDate(d.getDate() + ((3 + 7 - d.getDay()) % 7))
         if (d < today) {
           d = addMinutes(d, 10080)
         }
@@ -869,8 +958,15 @@ function alarms1 () {
         const today = new Date()
         const timea = new Date('April 8 2021 ' + thu1[thursday[i].Slot] + ':00')
         const time2 = addMinutes(timea, -5)
-        let d = new Date(today.getFullYear(), today.getMonth(), today.getDate(), time2.getHours(), time2.getMinutes(), time2.getSeconds())
-        d.setDate(d.getDate() + (4 + 7 - d.getDay()) % 7)
+        let d = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          time2.getHours(),
+          time2.getMinutes(),
+          time2.getSeconds()
+        )
+        d.setDate(d.getDate() + ((4 + 7 - d.getDay()) % 7))
         if (d < today) {
           d = addMinutes(d, 10080)
         }
@@ -894,8 +990,15 @@ function alarms1 () {
         const today = new Date()
         const timea = new Date('April 9 2021 ' + fri1[friday[i].Slot] + ':00')
         const time2 = addMinutes(timea, -5)
-        let d = new Date(today.getFullYear(), today.getMonth(), today.getDate(), time2.getHours(), time2.getMinutes(), time2.getSeconds())
-        d.setDate(d.getDate() + (5 + 7 - d.getDay()) % 7)
+        let d = new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate(),
+          time2.getHours(),
+          time2.getMinutes(),
+          time2.getSeconds()
+        )
+        d.setDate(d.getDate() + ((5 + 7 - d.getDay()) % 7))
         if (d < today) {
           d = addMinutes(d, 10080)
         }
@@ -906,7 +1009,7 @@ function alarms1 () {
         })
         count = count + 1
       }
-      function gotAll (alarms) {
+      function gotAll(alarms) {
         console.log(alarms)
       }
       window.chrome.alarms.getAll(gotAll)

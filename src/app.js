@@ -415,8 +415,7 @@ window.onload = function () {
   //   for (let j = 0; j < monday.length; j++) {
   //     document.querySelectorAll('.edit')[j].addEventListener('click', () => {
   //       const det = window.prompt(
-  //         'Enter details',
-  //         'Eg. A1-CSE2011-ETH-SJT405-UGF'
+  //         'Enter Details (Eg. A1-CSE2011-ETH-SJT405-UGF)'
   //       )
   //       console.log(det)
   //       if (det !== null) {
@@ -434,7 +433,7 @@ window.onload = function () {
   //           redirect: 'follow'
   //         }
 
-  //         fetch('http://13.233.74.155/uploadtext/', requestOptions)
+  //         fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
   //           .then((response) => response.json())
   //           .then((result) => {
   //             if (result.Slots.length !== 0) {
@@ -559,8 +558,7 @@ function mondata() {
   for (let j = 0; j < monday.length; j++) {
     document.querySelectorAll('.edit')[j].addEventListener('click', () => {
       const det = window.prompt(
-        'Enter details',
-        'Eg. A1-CSE2011-ETH-SJT405-UGF'
+        'Enter Details (Eg. A1-CSE2011-ETH-SJT405-UGF)'
       )
       console.log(det)
       if (det !== null) {
@@ -578,7 +576,7 @@ function mondata() {
           redirect: 'follow'
         }
 
-        fetch('http://13.233.74.155/uploadtext/', requestOptions)
+        fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             if (result.Slots.length !== 0) {
@@ -697,8 +695,7 @@ function tuedata() {
   for (let j = 0; j < tuesday.length; j++) {
     document.querySelectorAll('.edit')[j].addEventListener('click', () => {
       const det = window.prompt(
-        'Enter details',
-        'Eg. A1-CSE2011-ETH-SJT405-UGF'
+        'Enter Details (Eg. A1-CSE2011-ETH-SJT405-UGF)'
       )
       console.log(det)
       if (det !== null) {
@@ -716,7 +713,7 @@ function tuedata() {
           redirect: 'follow'
         }
 
-        fetch('http://13.233.74.155/uploadtext/', requestOptions)
+        fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             if (result.Slots.length !== 0) {
@@ -834,8 +831,7 @@ function weddata() {
   for (let j = 0; j < wednesday.length; j++) {
     document.querySelectorAll('.edit')[j].addEventListener('click', () => {
       const det = window.prompt(
-        'Enter details',
-        'Eg. A1-CSE2011-ETH-SJT405-UGF'
+        'Enter Details (Eg. A1-CSE2011-ETH-SJT405-UGF)'
       )
       console.log(det)
       if (det !== null) {
@@ -853,7 +849,7 @@ function weddata() {
           redirect: 'follow'
         }
 
-        fetch('http://13.233.74.155/uploadtext/', requestOptions)
+        fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             if (result.Slots.length !== 0) {
@@ -974,8 +970,7 @@ function thudata() {
   for (let j = 0; j < thursday.length; j++) {
     document.querySelectorAll('.edit')[j].addEventListener('click', () => {
       const det = window.prompt(
-        'Enter details',
-        'Eg. A1-CSE2011-ETH-SJT405-UGF'
+        'Enter Details (Eg. A1-CSE2011-ETH-SJT405-UGF)'
       )
       console.log(det)
       if (det !== null) {
@@ -993,7 +988,7 @@ function thudata() {
           redirect: 'follow'
         }
 
-        fetch('http://13.233.74.155/uploadtext/', requestOptions)
+        fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             if (result.Slots.length !== 0) {
@@ -1114,8 +1109,7 @@ function fridata() {
   for (let j = 0; j < friday.length; j++) {
     document.querySelectorAll('.edit')[j].addEventListener('click', () => {
       const det = window.prompt(
-        'Enter details',
-        'Eg. A1-CSE2011-ETH-SJT405-UGF'
+        'Enter Details (Eg. A1-CSE2011-ETH-SJT405-UGF)'
       )
       console.log(det)
       if (det !== null) {
@@ -1133,7 +1127,7 @@ function fridata() {
           redirect: 'follow'
         }
 
-        fetch('http://13.233.74.155/uploadtext/', requestOptions)
+        fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
           .then((response) => response.json())
           .then((result) => {
             if (result.Slots.length !== 0) {

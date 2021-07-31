@@ -279,7 +279,7 @@ form.addEventListener('submit', (e) => {
     redirect: 'follow'
   }
 
-  fetch('http://13.233.74.155/uploadfile/', requestOptions)
+  fetch('https://vittyapi.dscvit.com/uploadfile/', requestOptions)
     .then((response) => response.json())
     .then((result) => {
       if (result !== undefined) {
@@ -364,7 +364,7 @@ document.querySelector('.login3').addEventListener('click', (e) => {
       redirect: 'follow'
     }
 
-    fetch('http://13.233.74.155/uploadtext/', requestOptions)
+    fetch('https://vittyapi.dscvit.com/uploadtext/', requestOptions)
       .then((response) => response.json())
       .then((result) => {
         if (result !== undefined) {

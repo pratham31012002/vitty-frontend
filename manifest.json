@@ -1,6 +1,6 @@
 {
   "name": "VITTY",
-  "version": "1.0",
+  "version": "1.0.1",
   "description": "Upload your VIT timetable and view it whenever required and receive notifications",
   "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://apis.google.com https://www.googleapis.com https://securetoken.googleapis.com; object-src 'self'",
   "permissions": [
@@ -44,6 +44,5 @@
     "48": "images/logo.png",
     "128": "images/logo.png"
   },
-  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAoiS5VhgCUY8S4WGnDamXCDKy/9C9Ix2d0FkwTk6jmucOhdv9jDdH9SwkcGCyZsGyTv3uRh+Sp7xXNqilPss1wIS/Ht1hXB4Wob6v4vWxwr+hd30MR8FOFeb8SUdmAjzGpCgjYquTE17R4xURyu67boUU5LaVAysxNvlA7IcaVexLi0VCsOXmCnRVCT4tOkpUPmXcIDXevUTvsLqtVZxxPaZooWVKRILbxvvm9jereS5M9caSLCM5x34yRxGHMorUyYwWUaJhbzheWFYaAYFsulYEz76gvxoFlk3+t6XiIOQjIUe4M9O/0pAEBETBBlf/yIpIPju5MNaQHepHhd41OwIDAQAB",
   "manifest_version": 2
 }
